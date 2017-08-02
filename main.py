@@ -34,6 +34,7 @@ def main():
 					else:
 						investors.append(investor(row['id'], row['name'], row['input']))
 
+	resultFilename = 'cleanedInvestor.csv'
 
 
 
