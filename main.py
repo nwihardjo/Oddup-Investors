@@ -11,7 +11,8 @@ def nameAnalysis(name):
 	# analyse the name passed using probablepeople API
 	# because probablepeople library can't be easily installed in our machine
 	# return True if it is a company, return False otherwise
-	params = {'api_key': API_KEY, 'name': name, 'fmt' = 'json'}
+	
+	params = {'api_key': API_KEY, 'name': name, 'fmt': 'json'}
 
 	response = requests.get(URL, params = params)
 	if response.status_code != 200:
@@ -19,20 +20,30 @@ def nameAnalysis(name):
 	
 	return (response.text.json()['type'] == 'Corporation')
 
-class investor:
-	def __init__(self, id, name, inputType):
+
+class investor():
+	def __init__(self, id, name, inputType, rootName = None):
 		self.id = id
 		self.name = name.title()
 		self.inputType = inputType
+		self.rootName = rootName
+
+		#value is True if the investor is a company
 		self.type = nameAnalysis(name)
+
+		
+	def get_name(self): return self.name
+	def get_info(self): return [self.id, self.name, self.inputType, self.rootName]
 
 	def compare(comparedInvestorName):
 		# compare the investor's name with the existing ones
 		# return True if compared investors are the same
 
-		for subname in comparedInvestorName.split():
-			if subname in self.name:
-				return False
+		if self.inputType = False:
+			return False
+
+		if comparedInvestorName.split()[0] in self.name:
+			return True
 
 
 
@@ -40,27 +51,28 @@ class investor:
 
 
 def main():
+	resultFilename = 'cleanedInvestor.csv'
 	filename = input('Filename input: ')
+	investors = []
 	
 	with open(filename, 'r') as f:
 		writer = csv.DictReader(f)
-		investors = []
 		
 		for row in reader:
 			for singleInvestor in investors:
-				if type(singleInvestor) is not list:
-					if singleInvestor.compare(row['name'].lower()):
-						investors[index(singleInvestor)] = [singleInvestor, investor(row['id'], row['name'], row['input'])]
-					else:
-						investors.append(investor(row['id'], row['name'], row['input']))
-				else if type(singleInvestor) is list:
-					if singleInvestor[0].compare(row['name'].lower()):
-						investors[index(singleInvestor)].append(investor(row['id'], row['name'], row['input']))
-					else:
+				if singleInvestor.compare(row['name'].title()):
+					investors[index(singleInvestor)] = [singleInvestor, investor(row['id'], row['name'], row['input'], singleInvestor.get_name())]
+				else:
+					if nameAnalysis(row['name']):
 						investors.append(investor(row['id'], row['name'], row['input']))
 
-	resultFilename = 'cleanedInvestor.csv'
+	with open('cleanedInvestor.csv','w', newline = '' ) as f:
+		fieldnames = ['id','name','type','root']
+		writer = csv.writer(f, filednames = fieldnames)
+		writer.writeheader()
 
+		for investor in investors:
+			writer.writerow(investor.get_info())
 
 
 
