@@ -1,5 +1,4 @@
 import csv
-import xlrd
 import requests
 import json
 
@@ -39,7 +38,7 @@ class investor():
 		# compare the investor's name with the existing ones
 		# return True if compared investors are the same
 
-		if self.inputType = False:
+		if not self.inputType:
 			return False
 
 		if comparedInvestorName.split()[0] in self.name:
@@ -51,12 +50,11 @@ class investor():
 
 
 def main():
-	resultFilename = 'cleanedInvestor.csv'
 	filename = input('Filename input: ')
 	investors = []
 	
 	with open(filename, 'r') as f:
-		writer = csv.DictReader(f)
+		reader = csv.DictReader(f)
 		
 		for row in reader:
 			for singleInvestor in investors:
