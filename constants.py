@@ -1,12 +1,21 @@
 API_KEY = 'ac5e0a11-8406-4b94-a57f-b1a6661b0886'
 URL = 'https://parserator.datamade.us/api/probablepeople/'
 
-# Investor which has 'University' in it won't be grouped
+# investor in this list only be rejected when compared, it still can be make as a corporation
+REJECTED_COMPARED_COMPANY_IDENTIFIERS = ['Social', 'Stein', 'Startup', 'Star', 'Start', 'Suzhou', 
+'Sigma', 'Silicon', 'Zhuhai', 'Yunnan', 'York', 'Wu', 'University', 'William', 'Tom', 'T.']
 
-
-REJECTED_SPECIAL_IDENTIFIERS = ['Zhuhai', 'Yunnan', 'York', 'Wu', 'White', 'University', 'William']
-REJECTED_COMPANY_IDENTIFIERS = ['White Unicorn Ventures']
+#investor in this list, can't be made into root, or can't be made into corporation
+REJECTED_COMPANY_IDENTIFIERS = ['White Unicorn Ventures', 'Times Mirror Corporation','Time Warner Investments', 
+'Surya Ventures Pte Ltd', 'Gegax', 'Tan' , 'Sun', 'Sunil', 'William', 'Vijay', 'Vikram']
 
 APPROVED_COMPANY_IDENTIFIERS = ['Tencent', 'tiange.com', 'Xiaomi', 'Innopark', 'Capital', 'International', 
-'Holdings', 'Pharmaceutical', 'Broadcasting', 'Fund', 'Sports', 'Music', 'Inc', 'Angel', 'Ventures',
-'Investment', 'Accelerator', 'Venture', 'Textile', 'Holding','Corporation', 'Sun']
+'Holdings', 'Pharmaceutical', 'Broadcasting', 'Fund', 'Sports', 'Music', 'Inc', 'Angel', 'Angels', 'Ventures',
+'Investment', 'Accelerator', 'Venture', 'Textile', 'Holding','Corporation', 'Company', 'and', 'Media',
+'Friends', 'Growth', 'Enterprises', 'Labs', 'Key', 'Group', 'Insurance', 'Property', 'Vc']
+
+"""
+ASSUMPTIONS:
+- Investors which first name has non-alphanumeric characters can't be differentiated
+- Typo between 2 investors can't be differentiated
+"""
