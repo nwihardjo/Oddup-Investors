@@ -37,8 +37,11 @@ class Investor:
 		# return True if compared investors are the same
 		if comparedInvestorName.split()[0].lower() == 'the':
 			comparedInvestorName = ' '.join(comparedInvestorName.split()[1:])
-
-		if not self.type or hardCodeNameComparator(self.get_name(), comparedInvestorName):
+		
+		if not self.type and self.name == comparedInvestorName:
+			# allow the person type solely to have roots if the name are exactly the same
+			return True
+		elif not self.type or hardCodeNameComparator(self.get_name(), comparedInvestorName):
 			return False
 
 		for subName in self.name.split():
@@ -54,7 +57,7 @@ def main():
 	with open("output.csv", mode = 'r', encoding = 'utf8') as f:
 		reader = csv.DictReader(f)
 		
-		for num in range(0, 920):
+		for num in range(0, 1750):
 			reader.__next__()
 
 		for row in reader:
@@ -66,12 +69,10 @@ def main():
 				for singleInvestor in reversed(investors):
 					if singleInvestor.compare(row['name'].title()):
 						investors.append(Investor(row['id'], row['name'], row['type'], singleInvestor.get_root()))
-						for inv in investors: print(inv.get_name())
 						isCompared = True
 						break
 				if not isCompared:
 					investors.append(Investor(row['id'], row['name'], row['type']))
-					for inv in investors: print(inv.get_name())
 
 	with open('cleanedInvestor.csv','w', newline = '' ) as f:
 		fieldnames = ['id','name','type','root']
@@ -80,8 +81,6 @@ def main():
 
 		for investor in investors:
 			writer.writerow(investor.get_info())
-
-
 
 if __name__ == '__main__':
 	main()
