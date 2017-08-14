@@ -38,6 +38,9 @@ class Investor:
 		if comparedInvestorName.split()[0].lower() == 'the':
 			comparedInvestorName = ' '.join(comparedInvestorName.split()[1:])
 		
+		if nonAlphanumRemover(comparedInvestorName) == nonAlphanumRemover(self.name):
+			return True
+
 		if not self.type and self.name == comparedInvestorName:
 			# allow the person type solely to have roots if the name are exactly the same
 			return True
@@ -57,7 +60,7 @@ def main():
 	with open("output.csv", mode = 'r', encoding = 'utf8') as f:
 		reader = csv.DictReader(f)
 		
-		for num in range(0, 1750):
+		for num in range(0, 3070):
 			reader.__next__()
 
 		for row in reader:

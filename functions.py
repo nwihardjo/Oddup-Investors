@@ -49,8 +49,10 @@ def nameRejectComparator(name):
 	"""special name case which for different investors having the same first name"""
 	# return True if it is rejected
 	if name.split()[0] in REJECTED_COMPARED_COMPANY_IDENTIFIERS:
+		# print('DEBUG: {} IS IN THE REJECTED COMPARED COMPANY IDENTIFIERS'.format(name))
 		return True
 	else:
+		# print('DEBUG: {} IS NOT IN THE REJECTED COMPARED COMPANY IDENTIFIERS'.format(name))
 		return False
 
 def compareSubString(name, comparedName, minMatch):
@@ -59,7 +61,7 @@ def compareSubString(name, comparedName, minMatch):
 	similarity = 0
 
 	for subComparedName in comparedName.split():
-		if countriesCheck(subComparedName): 
+		if countriesCheck(subComparedName) or subComparedName in SKIPPED_COMPANY_IDENTIFIERS: 
 			continue
 		elif subComparedName in name: 
 			similarity += 1
@@ -70,7 +72,7 @@ def compareSubString(name, comparedName, minMatch):
 
 def hardCodeNameComparator(investorName, comparedInvestorName):
 	"""hard coded comparison between two investors"""
-	# return True if the compared investors are not the same
+	# return True if the compared investors are not the same, return False otherwise
 	investorName = nonAlphanumRemover(investorName)
 	comparedInvestorName = nonAlphanumRemover(comparedInvestorName)
 
