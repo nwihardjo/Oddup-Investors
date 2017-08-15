@@ -7,6 +7,7 @@ def nonAlphanumRemover(name):
 	"""remove non-alphanumeric character(s) or Chinese ones"""
 	# return clean and non-alphanumeric character(s)
 	if not name.replace(" ","").isalnum() and len(name.split('(')[:-1]) > 0:
+		# print('DEBUG: NAME CONTAINS NONALPHANUM CHARS', name)
 		name = ' '.join(name.split('(')[:-1])
 	return name
 
