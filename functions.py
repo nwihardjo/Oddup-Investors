@@ -50,10 +50,10 @@ def nameRejectComparator(name):
 	"""special name case which for different investors having the same first name"""
 	# return True if it is rejected
 	if name.split()[0] in REJECTED_COMPARED_COMPANY_IDENTIFIERS:
-		# print('DEBUG: {} IS IN THE REJECTED COMPARED COMPANY IDENTIFIERS'.format(name))
+		# print('DEBUG: {} IS IN THE REJECTED COMPARED COMPANY IDENTIFIERS'.format(name.split()[0]))
 		return True
 	else:
-		# print('DEBUG: {} IS NOT IN THE REJECTED COMPARED COMPANY IDENTIFIERS'.format(name))
+		# print('DEBUG: {} IS NOT IN THE REJECTED COMPARED COMPANY IDENTIFIERS'.format(name.split()[0]))
 		return False
 
 def compareSubString(name, comparedName, minMatch):

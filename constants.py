@@ -18,24 +18,28 @@ REJECTED_COMPARED_COMPANY_IDENTIFIERS = ['Social', 'Stein', 'Startup', 'Star', '
 'Everbright', 'Far', 'Ff', 'First', 'Formation', 'Fortune', 'Fosun', 'Founder', 'Chan',
 'Chinese', 'Citic', 'Click', 'Columbia', 'Cradle', 'Creation', 'Digital', 'Discovery', 'Draper',
 'B', 'Bank', 'Battery', 'Big', 'Blackrock', 'Blue', 'Bright', 'Broad', 'Capital', 'China',
-'Access', 'Al', 'Alpha', 'Angel', 'Angels', 'Ant', 'Ask', 'Axis', 'Cathay', 'Beijing', 'Deep'
-'Zhuhai', 'Yunnan', 'York', 'Wu', 'Quest', 'University', 'William', 'Tom', 'T', '51']
+'Access', 'Al', 'Alpha', 'Angel', 'Angels', 'Ant', 'Ask', 'Axis', 'Cathay', 'Beijing', 'Deep',
+'Zhuhai', 'Yunnan', 'York', 'Wu', 'Quest', 'University', 'William', 'Tom', 'T.', '51', 'Zhen',
+'Vision', 'Tsing', 'True', 'Trend', 'Target', 'Ta', 'Sf', 'Max', 'Mahindra', 'Jsw', 'Giant', 'Ants',
+'West', 'Venture', 'Scale']
 
 # investor in this list, can't be made into root nor corporation
+# some of them due to incapability of probablepeople to differentiate between corporation and person
 REJECTED_COMPANY_IDENTIFIERS = ['White Unicorn Ventures', 'Times Mirror Corporation','Time Warner Investments', 
 'Surya Ventures Pte Ltd', 'Michael R. Sutcliff', 'John S. Hendricks', 'Joseph N. Sanberg', 'Lim Swee Yong', 
 'David S. Kidder', 'Axis Capital Corp', 'B. S. Nagesh', 'Brand Hoff', 'Carol L. Realini', 'Anthony Libonate',
 'Gegax', 'Tan', 'Sun', 'Sunil', 'William', 'Vijay', 'Vikram', 'Shubhas', 'Sandeep', 'Praveen', 'Pradeep', 'Pawan', 
 'Nagendra', 'Nishant', 'Oleg', 'National', 'Nitin', 'Farrel', 'Farooq', 'Florian', 'Chad', 'Cp', 'Craig', 'Danny', 
-'Deepak', 'Ajay', 'Amit', 'Dinesh', 'China', 'Arihant', 'Abhai S. Rao']
+'Deepak', 'Ajay', 'Amit', 'Dinesh', 'China', 'Arihant', 'Abhai S. Rao', 'Puneet', 'Michael Carlos', 'Eddie Thai',
+'Benjamin Scherrey']
 
 # investor which name contains words in this list will be skipped in the compareSubString function
-SKIPPED_COMPANY_IDENTIFIERS = ['Private']
+SKIPPED_COMPANY_IDENTIFIERS = ['Private', 'University']
 
 
 # investor in this list has some investors which first name are the same but different investor, and some
 # are the same. Can compare the 2 words
-TEMP_COMPANY_IDENTIFIERS = ['Legend', 'Lightspeed', 'Infinity', 'Innovation', 'China', 'Cathay', 'Axis', 'Beijing', 'Bank', 'CITIC']
+TEMP_COMPANY_IDENTIFIERS = ['Legend', 'Lightspeed', 'Infinity', 'Innovation', 'China', 'Cathay', 'Axis', 'Beijing', 'Bank', 'CITIC', 'Undisclosed']
 
 # investor which name is in this list, automatically become a corporation
 APPROVED_COMPANY_IDENTIFIERS = ['Tencent', 'tiange.com', 'Xiaomi', 'Innopark', 'Capital', 'International', 

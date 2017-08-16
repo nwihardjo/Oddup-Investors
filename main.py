@@ -65,14 +65,15 @@ def main():
 	with open("output.csv", mode = 'r', encoding = 'utf-8') as f:
 		reader = csv.DictReader(f)
 		
-		# for _ in range(0, 4500):
+		# for _ in range(0, 483):
 		# 	reader.__next__()
+
 		for row in reader:
-			temp = 0
-			if temp > 1000:
-				break
-			else:
-				temp += 1
+		# 	temp = 0
+		# 	if temp > 1000:
+		# 		break
+		# 	else:
+		# 		temp += 1
 
 			if not investors:
 				# first investor in the list
@@ -81,7 +82,7 @@ def main():
 				isCompared = False
 				temp = 0
 				for singleInvestor in reversed(investors):
-					if temp > 50: break
+					if temp >= 25: break
 					else: temp += 1
 					if singleInvestor.compare(row['name'].title()):
 						investors.append(Investor(row['id'], row['name'], row['type'], singleInvestor.get_root()))
